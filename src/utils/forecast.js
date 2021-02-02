@@ -13,11 +13,13 @@ const request = require('request')
             console.log(body.error)
             callback("Unable to find location", undefined)
         } else {
-            const {temperature, feelslike} = body.current
+            const {temperature, feelslike, precip} = body.current
+            console.log(body.current)
             callback(undefined, 
             {
                 current_temp: temperature,
-                feels_like_temp: feelslike
+                feels_like_temp: feelslike,
+                precip: precip
             })
         }
     })

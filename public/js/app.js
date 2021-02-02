@@ -13,12 +13,14 @@ weather_form.addEventListener('submit', (e) => {
     const location = search.value
 
     fetch('/weather?address=' + location).then((response) => {
+        console.log(response)
     response.json().then((data) => {
         if (data.error) {
             message_1.textContent = "Error: " + data.error
         } else { 
+            console.log(data.forecast)
             message_1.textContent = data.location
-            message_2.textContent = "It is currently " + data.forecast.current_temp + " degrees outside. It feels like " + data.forecast.feels_like_temp +  " degrees outside."
+            message_2.textContent = "It is currently " + data.forecast.current_temp + " degrees outside. It feels like " + data.forecast.feels_like_temp +  " degrees outside, with a precip of " + data.forecast.precip
         }
     })
 })
